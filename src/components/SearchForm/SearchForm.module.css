@@ -1,0 +1,90 @@
+.SearchForm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 100px 120px;
+}
+
+.SearchForm form {
+    display: flex;
+    padding: 12px;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.2);
+    transition: all 0.2s ease-in;
+}
+
+.SearchForm input,
+.SearchForm button {
+    display: block;
+    height: 54px;
+    line-height: 54px;
+}
+
+.SearchForm label {
+    position: absolute;
+    left: -9999px;
+}
+
+.SearchForm input {
+    font-size: 28px;
+    color: #333;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 4px 0 0 4px;
+    background: white;
+    transition: all 170ms ease-in;
+    display: block;
+    width: 240px;
+}
+
+.SearchForm .FormFocus input {
+    width: 300px;
+}
+
+.Button {
+    background: #b9d427;
+    border-radius: 0 4px 4px 0;
+    transition: all 0.2s ease;
+    position: relative;
+    display: block;
+}
+
+.Button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    transition: width 150ms ease-in;
+    background: #d0e844;
+    border-radius: 0 4px 4px 0;
+}
+
+.Button:hover:after {
+    width: 100%;
+}
+
+.Button button {
+    color: #515825;
+    text-shadow: 0 1px #e3ff4c;
+    border: 0;
+    background: transparent;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    z-index: 20;
+    width: 68px;
+}
+
+.Button button:hover {
+    cursor: pointer;
+}

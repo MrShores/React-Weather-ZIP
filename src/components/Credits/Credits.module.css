@@ -1,0 +1,42 @@
+.Credits {
+    background: white;
+    position: absolute;
+    z-index: 500;
+    height: 100%;
+    width: 40px;
+    background: white; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #eaeaea 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#eaeaea 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #ffffff 0%,#eaeaea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+}
+
+.CreditsText {
+    color: #9e9e9e;
+    text-align: center;
+    font-size: 12px;
+    line-height: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    width: 250px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    margin: -25px 0 0 -125px;
+    transform: rotate(-90deg);
+}
+
+.CreditsText a {
+    color: #4493e4;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.CreditsText a:hover,
+.CreditsText a:active {
+    color: #a9c11e;
+}
