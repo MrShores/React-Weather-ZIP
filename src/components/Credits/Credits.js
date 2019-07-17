@@ -5,7 +5,7 @@ const credits = () => (
     <div className={classes.Credits}>
         <div className={classes.CreditsText}>
             <span>React Weather App</span>&ensp;//&ensp;
-            <a href="http://michaelshores.com" target="_blank" rel="noopener">Michael Shores</a>
+            <a href="http://michaelshores.com" target="_blank" rel="noopener noreferrer">Michael Shores</a>
         </div>
     </div>
 );

@@ -85,7 +85,7 @@ class SearchForm extends Component {
 
         return (
             <div className={classes.SearchForm}>
-                <form className={formClass} onSubmit={this.formSubmitHandler} action="" autocomplete="off">
+                <form className={formClass} onSubmit={this.formSubmitHandler} action="" method="POST" autoComplete="off">
                     <label htmlFor="zipcode">ZIP Code</label>
                     <input
                         type="text"

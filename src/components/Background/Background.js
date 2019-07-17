@@ -1,13 +1,25 @@
 import React from 'react';
 import classes from './Background.module.css';
+import Gradient from './Gradient/Gradient';
 
 const background = (props) => {
- 
-    let bgClasses = [classes.Background, classes.Blue];
+
+    const colors = [
+        'start',
+        'blue',
+        'orange',
+        'red',
+    ];
+
+    let gradients = colors.map((color, index) => {
+        const active = color === props.gradientColor ? true : false;
+        return <Gradient key={index} color={color} active={active} />;
+    });
 
     return (
-        <div className={bgClasses.join(' ')}>
-            <div className={classes.BackgroundInner}></div>
+        <div className={classes.Background}>
+            {gradients}
+            <div className={classes.BackgroundScreen}></div>
         </div>
     );
 }
