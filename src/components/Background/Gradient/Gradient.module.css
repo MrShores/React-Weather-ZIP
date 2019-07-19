@@ -1,8 +1,4 @@
-.GradientStart,
-.GradientPurple,
-.GradientBlue,
-.GradientOrange,
-.GradientRed {
+.Gradient {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -31,6 +27,13 @@
 }
 
 .GradientBlue {
+    background: #7abaee;
+    background: -moz-linear-gradient(top,  #a7dfff 0%, #4891dc 100%);
+    background: -webkit-linear-gradient(top,  #a7dfff 0%,#4891dc 100%);
+    background: linear-gradient(150deg, #a7dfff 0%,#4891dc 100%);
+}
+
+.GradientBlueLight {
     background: #6fd0ff;
     background: -moz-linear-gradient(top,  #6fd0ff 0%, #20a5e5 100%);
     background: -webkit-linear-gradient(top,  #6fd0ff 0%,#20a5e5 100%);

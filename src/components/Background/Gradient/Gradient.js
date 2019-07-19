@@ -3,13 +3,16 @@ import classes from './Gradient.module.css';
 
 const gradient = (props) => {
 
-    let gradientClasses = [];
+    let gradientClasses = [classes.Gradient];
     switch( props.color ){
         case 'purple':
             gradientClasses.push(classes.GradientPurple);
             break;
         case 'blue':
             gradientClasses.push(classes.GradientBlue);
+            break;
+        case 'blueLight':
+            gradientClasses.push(classes.GradientBlueLight);
             break;
         case 'orange':
             gradientClasses.push(classes.GradientOrange);

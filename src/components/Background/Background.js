@@ -8,6 +8,7 @@ const background = (props) => {
         'start',
         'purple',
         'blue',
+        'blueLight',
         'orange',
         'red',
     ];
