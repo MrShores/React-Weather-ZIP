@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classes from './WeatherResults.module.css';
 import CloseButton from './CloseButton/CloseButton';
 import WeatherResult from './WeatherResult/WeatherResult';
 
+
 class Weather extends Component {
 
-    state = {
-        resultValues: [],
-    }
+    /* Lifecycle
+    -------------------------------------------------------------------------*/
 
     componentWillUnmount() {
         this.props.mounted();
     }
+
+
+    /* Methods
+    -------------------------------------------------------------------------*/
 
     /**
      * Meter's to miles raw calculation
@@ -51,6 +56,10 @@ class Weather extends Component {
         };
         return date.toLocaleString('en-US', options);
     }
+
+
+    /* Render
+    -------------------------------------------------------------------------*/
 
     render() {
 
@@ -105,6 +114,15 @@ class Weather extends Component {
             </div>
         );
     };
+}
+
+/**
+ * Component Props
+ */
+Weather.propTypes = {
+    mounted: PropTypes.func,
+    closeResults: PropTypes.func,
+    weather: PropTypes.object.isRequired,
 }
 
 export default Weather;
