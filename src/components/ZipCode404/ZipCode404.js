@@ -10,9 +10,9 @@ const zipCode404 = (props) => {
 
             <img className={classes.Trex} src={trex} alt="" />
 
-            <button className={classes.TryAgain} onClick={props.close404}>
-                T-Rex ate that ZIP code!
-            </button>
+            <div className={classes.TryAgain}>
+                <button onClick={props.close404}>T-Rex ate your ZIP code!</button>
+            </div>
 
             <div className={classes.Attribution}>
                 Vector Art by <a target="_blank" rel="noopener noreferrer" href="https://www.vecteezy.com/">Vecteezy!</a>

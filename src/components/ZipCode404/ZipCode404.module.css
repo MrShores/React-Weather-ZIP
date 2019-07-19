@@ -67,31 +67,42 @@
     }
 }
 
+@media (max-width: 400px){
+    .Trex {
+        margin-left: -10px;
+    }
+}
+
 
 /* Try Again
 -----------------------------------------------------------------------------*/
 
 .TryAgain {
-    border: 9px solid #38093d;
-    background: #f9e994;
-    padding: 9px 0 12px;
     position: absolute;
-    left: 50%;
+    width: 100%;
     top: 50px;
-    width: 344px;
-    margin-left: -152px;
-    line-height: 1;
-    font-size: 24px;
-    font-weight: 700;
-    color: #a92422;
-    display: block;
+    padding-left: 20px;
     opacity: 0;
     transform: translateY(-50px);
     animation: TryAgainIn 300ms 250ms ease-out forwards;
 }
-.TryAgain:hover {
+.TryAgain button {
+    display: block;
+    padding: 10px 15px 10px;
+    margin: auto;
+    border: 6px solid #38093d;
+    background: #f9e994;
+    font-family: 'Bangers';
+    color: #a92422;
+    font-size: 24px;
+    line-height: 1;
+    transform: scale(1.4);
+    transition: all 0.2s ease-out;
+}
+.TryAgain button:hover {
     cursor: pointer;
     background: #fff;
+    transform: scale(1.5);
 }
 
 @keyframes TryAgainIn {
@@ -105,11 +116,21 @@
     }
 }
 
+@media (max-width: 650px){
+    .TryAgain button {
+        transform: scale(1);
+    }
+    .TryAgain button:hover {
+        transform: scale(1.1);
+    }
+}
+
 @media (max-width: 450px){
-    .TryAgain {
-        font-size: 18px;
-        width: 270px;
-        margin-left: -115px;
+    .TryAgain button {
+        transform: scale(0.8);
+    }
+    .TryAgain button:hover {
+        transform: scale(0.9);
     }
 }
 
