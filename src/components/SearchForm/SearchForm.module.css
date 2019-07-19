@@ -45,8 +45,8 @@
     width: 240px;
 }
 
-.SearchForm .FormFocus input {
-    width: 300px;
+.SearchForm input:focus {
+    width: 270px;
 }
 
 .Button {
