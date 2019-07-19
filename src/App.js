@@ -5,7 +5,7 @@ import Credits from './components/Credits/Credits';
 import Background from './components/Background/Background';
 import SearchForm from './components/SearchForm/SearchForm';
 import WeatherResults from './components/WeatherResults/WeatherResults';
-import FadeInOut from './hoc/FadeInOut/FadeInOut';
+import AnimateInOut from './hoc/AnimateInOut/AnimateInOut';
 import Axios from 'axios';
 
 
@@ -110,9 +110,17 @@ class App extends Component {
      *  - show the SearchForm
      *  - reset the background gradient to default ('start')
      */
-    weatherResultsCloseHandler = () => {
-        this.setState({currentView: 'searchForm'});
-        this.updateGradientFromTemp(NaN);
+    closeWeatherResultsHandler = () => {
+        // Remove <WeatherResults>
+        this.setState({currentView: ''});
+        // Change gradient
+        setTimeout(() => {
+            this.updateGradientFromTemp(NaN);
+        }, 200);
+        // Fade in the <SearchForm>
+        setTimeout(() => {
+            this.setState({currentView: 'searchForm'});
+        }, 500);
     }
 
     /* Methods
@@ -147,7 +155,7 @@ class App extends Component {
                 <Background gradientColor={this.state.gradientColor} />
                 <div className="WeatherLayout">
 
-                    <FadeInOut
+                    <AnimateInOut
                         in={this.state.currentView === 'searchForm'}
                         timeout={{
                             enter: 500,
@@ -157,9 +165,9 @@ class App extends Component {
                         <SearchForm
                             zipCode={this.state.zipCode}
                             zipCodeSubmit={this.zipCodeSubmitHandler} />
-                    </FadeInOut>
+                    </AnimateInOut>
 
-                    <FadeInOut
+                    <AnimateInOut
                         in={this.state.currentView === 'weatherResults'}
                         timeout={{
                             enter: 500,
@@ -168,8 +176,8 @@ class App extends Component {
                     >
                         <WeatherResults
                             weather={this.state.weather}
-                            closeResults={this.weatherResultsCloseHandler} />
-                    </FadeInOut>
+                            closeResults={this.closeWeatherResultsHandler} />
+                    </AnimateInOut>
 
                 </div>
             </div>

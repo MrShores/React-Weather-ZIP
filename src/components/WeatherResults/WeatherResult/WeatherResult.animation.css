@@ -1,0 +1,16 @@
+.weatherResult-appear,
+.weatherResult-enter {
+    opacity: 0;
+}
+
+.weatherResult-appear-active,
+.weatherResult-appear-done,
+.weatherResult-enter-active,
+.weatherResult-enter-done {
+    opacity: 1;
+}
+
+.weatherResult-exit,
+.weatherResult-exit-done {
+    opacity: 0;
+}

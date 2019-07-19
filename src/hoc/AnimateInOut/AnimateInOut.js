@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
-import './FadeInOut.css';
+import './AnimateInOut.css';
 
 /**
  * Fade in and out animation wrapper
@@ -9,7 +9,7 @@ import './FadeInOut.css';
  * Composes from the <CSSTransition> component from React Transition Group:
  * http://reactcommunity.org/react-transition-group/css-transition
  */
-class FadeInOut extends Component {
+class AnimateInOut extends Component {
 
     transTime = (state, timeout) => {
         if( typeof(this.props.timeout) === 'object' ){
@@ -31,7 +31,7 @@ class FadeInOut extends Component {
                 appear={true}
                 mountOnEnter={this.props.mountOnEnter ? this.props.mountOnEnter : true }
                 unmountOnExit={this.props.unmountOnExit ? this.props.unmountOnExit : true }
-                classNames="fadeInOut"
+                classNames="animateInOut"
             >
                 {state => (
                     <div
@@ -48,7 +48,7 @@ class FadeInOut extends Component {
 /**
  * Component Props
  */
-FadeInOut.propTypes = {
+AnimateInOut.propTypes = {
     in: PropTypes.bool.isRequired,
     timeout: PropTypes.oneOfType([
         PropTypes.number,
@@ -59,4 +59,4 @@ FadeInOut.propTypes = {
     unmountOnExit: PropTypes.bool,
 }
 
-export default FadeInOut;
+export default AnimateInOut;

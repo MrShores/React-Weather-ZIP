@@ -1,0 +1,16 @@
+.animateInOut-appear,
+.animateInOut-enter {
+    opacity: 0;
+}
+
+.animateInOut-appear-active,
+.animateInOut-appear-done,
+.animateInOut-enter-active,
+.animateInOut-enter-done {
+    opacity: 1;
+}
+
+.animateInOut-exit,
+.animateInOut-exit-done {
+    opacity: 0;
+}

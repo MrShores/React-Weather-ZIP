@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import classes from './WeatherResults.module.css';
 import CloseButton from './CloseButton/CloseButton';
+import WeatherResult from './WeatherResult/WeatherResult';
 
 class Weather extends Component {
+
+    state = {
+        resultValues: [],
+    }
 
     /**
      * Meter's to miles raw calculation
@@ -55,26 +60,14 @@ class Weather extends Component {
                         {w.main.temp.toFixed()}°
                     </div>
                     <div className={classes.City}>{w.name}</div>
-                    <div>
-                        Low: {w.main.temp_min.toFixed()}°<br />
-                        High: {w.main.temp_max.toFixed()}°
-                    </div>
-                    <div>
-                        Humidity: {w.main.humidity.toFixed()}
-                        <span className={classes.Unit}>%</span>
-                    </div>
-                    <div>
-                        Pressure: {w.main.pressure}
-                        <span className={classes.Unit}>hPa</span>
-                    </div>
-                    <div>
-                        Visibility: {this.metersToMiles(w.visibility)}
-                        <span className={classes.Unit}>miles</span>
-                    </div>
-                    <div>
-                        Wind: {this.windSpeed(w.wind.speed)}
-                        <span className={classes.Unit}>mph</span>
-                    </div>
+
+                    <WeatherResult index={1} label="Low" value={w.main.temp_min.toFixed()} unit="°" />
+                    <WeatherResult index={2} label="High" value={w.main.temp_max.toFixed()} unit="°" />
+                    <WeatherResult index={3} label="Humidity" value={w.main.humidity.toFixed()} unit="%" />
+                    <WeatherResult index={4} label="Pressure" value={w.main.pressure} unit="hPa" />
+                    <WeatherResult index={5} label="Visibility" value={this.metersToMiles(w.visibility)} unit="miles" />
+                    <WeatherResult index={6} label="Wind" value={this.windSpeed(w.wind.speed)} unit="mph" />
+
                     <div className={classes.Updated}>
                         Updated: {this.updatedTime(w.dt)}
                     </div>

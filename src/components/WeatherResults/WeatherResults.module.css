@@ -1,37 +1,55 @@
 .WeatherResults {
     padding: 100px;
     position: relative;
+    text-shadow: 0 1px 1px hsla(0,0%,0%,0.5);
 }
 
 .Weather {
     max-width: 500px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.45);
     border-radius: 5px;
     color: white;
-    font-size: 27px;
+    font-size: 10px;
     margin: 0 auto 0;
-    padding: 35px 40px 30px;
+    padding: 3.5em 4em 3em;
     text-align: center;
 }
 
 .Temperature {
-    font-size: 90px;
+    font-size: 9em;
     text-align: center;
     line-height: 1;
-    padding-left: 22px;
+    padding-left: 0.25em;
 }
 
 .City {
-    font-size: 21px;
-    padding: 10px 0 0;
+    font-size: 2.1em;
+    padding: 0.5em 0 0;
+}
+.City:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid hsla(0,0%,0%,0.2);
+    margin: 21px auto 4px;
+    width: 0;
+    animation: cityLine 450ms 250ms ease-out forwards;
 }
 
-.Unit {
-    font-size: 0.75em;
+@keyframes cityLine {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 240px;
+    }
 }
 
 .Updated {
-    font-size: 14px;
+    font-size: 1.4em;
     text-align: center;
-    padding: 18px 0 0;
+    padding: 2.7em 0 1.2em;
+}
+
+@media (max-width: 550px){
+    
 }
