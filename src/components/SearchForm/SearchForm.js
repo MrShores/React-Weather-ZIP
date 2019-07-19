@@ -15,13 +15,11 @@ class SearchForm extends Component {
     /* Lifecycle
     -------------------------------------------------------------------------*/
 
-    // componentWillMount(){
-    //     console.log('[SearchForm] willMount');
-    // }
-
-    // componentDidMount(){
-    //     console.log('[SearchForm] didMount');
-    // }
+    componentDidMount(){
+        if( this.props.zipCode404 ){
+            this.setErrorMessage(`ZIP ${this.props.zipCode} can't be found`);
+        }
+    }
 
 
     /* Methods and Handlers
