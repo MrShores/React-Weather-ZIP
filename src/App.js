@@ -14,7 +14,7 @@ class App extends Component {
     state = {
         zipCode: '',
         weather: {},
-        hasResults: false,
+        weatherResultsMounted: false,
         gradientColor: 'start',
         currentView: 'searchForm',
         zipCode404: false,
@@ -33,7 +33,7 @@ class App extends Component {
 
             this.setState({
                 zipCode: zipCode,
-                hasResults: false,
+                weatherResultsMounted: false,
             });
 
             // Get weather for zipCode from API
@@ -89,7 +89,7 @@ class App extends Component {
     }
 
     weatherResultsMountedHandler = () => {
-        this.setState({hasResults: true});
+        this.setState({weatherResultsMounted: true});
     }
 
 
@@ -128,7 +128,9 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Credits />
+                <Credits
+                    currentView={this.state.currentView}
+                    isError={this.state.zipCode404} />
                 <Background gradientColor={this.state.gradientColor} />
                 <div className="WeatherLayout">
 
@@ -144,7 +146,7 @@ class App extends Component {
                             zipCodeSubmit={this.zipCodeSubmitHandler}
                             zipCode404={this.state.zipCode404}
                             weather={this.state.weather}
-                            hasResults={this.state.hasResults} />
+                            hasResults={this.state.weatherResultsMounted} />
                     </AnimateInOut>
 
                     <AnimateInOut

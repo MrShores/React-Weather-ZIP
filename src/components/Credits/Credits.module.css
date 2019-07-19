@@ -4,11 +4,8 @@
     z-index: 500;
     height: 100%;
     width: 40px;
-    background: white; /* Old browsers */
-    background: -moz-linear-gradient(top,  #ffffff 0%, #eaeaea 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  #ffffff 0%,#eaeaea 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  #ffffff 0%,#eaeaea 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+    background: white;
+    transition: all 0.5s ease;
 }
 
 .CreditsText {
@@ -28,15 +25,38 @@
     top: 50%;
     margin: -25px 0 0 -150px;
     transform: rotate(-90deg);
+    transition: color 0.5s ease;
 }
 
 .CreditsText a {
     color: #4493e4;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.5s ease;
 }
 
 .CreditsText a:hover,
 .CreditsText a:active {
     color: #a9c11e;
+}
+
+.Error {
+    background: #2e0731;
+}
+.Error .CreditsText {
+    color: #5e4961;
+}
+.Error .CreditsText a {
+    color: #a92422;
+}
+
+@media (max-width: 400px){
+    .Credits {
+        width: 30px;
+    }
+    .CreditsText {
+        font-size: 10px;
+        height: 30px;
+        line-height: 30px;
+        margin-left: -149px;
+    }
 }
