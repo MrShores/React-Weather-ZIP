@@ -1,0 +1,16 @@
+.zipCode404-appear,
+.zipCode404-enter {
+    transform: translateX(-100%);
+}
+
+.zipCode404-appear-active,
+.zipCode404-appear-done,
+.zipCode404-enter-active,
+.zipCode404-enter-done {
+    transform: translateX(0);
+}
+
+.zipCode404-exit,
+.zipCode404-exit-done {
+    transform: translateX(-100%);
+}

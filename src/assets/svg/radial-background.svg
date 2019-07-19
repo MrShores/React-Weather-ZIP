@@ -1,0 +1,39 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="500px" height="500px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+	<rect fill="#A92422" width="500" height="500"/>
+    <g>
+        <polygon fill="#EF3E32" points="294.084,0 250,0 250,249.999 			"/>
+        <polygon fill="#EF3E32" points="250,500 250,249.999 205.921,500 			"/>
+    </g>
+    <g>
+        <polygon fill="#EF3E32" points="340.996,500 250.001,249.995 294.084,500 			"/>
+        <polygon fill="#EF3E32" points="250.001,249.995 205.92,0 159.01,0 			"/>
+    </g>
+    <g>
+        <polygon fill="#EF3E32" points="459.78,500 250.002,249.999 394.342,500 			"/>
+        <polygon fill="#EF3E32" points="40.227,0 250.002,249.999 105.665,0 			"/>
+    </g>
+    <g>
+        <polygon fill="#EF3E32" points="500,394.331 250.002,249.997 500,459.768 			"/>
+        <polygon fill="#EF3E32" points="0,105.66 250.002,249.997 0,40.223 			"/>
+    </g>
+    <g>
+        <polygon fill="#EF3E32" points="500,294.076 250.001,249.997 500,340.987 			"/>
+        <polygon fill="#EF3E32" points="0,205.916 250.001,249.997 0,159.005 			"/>
+    </g>
+    <g>
+        <polygon fill="#EF3E32" points="500,250 500,205.921 249.996,250 			"/>
+        <polygon fill="#EF3E32" points="0,294.085 249.996,250 0,250 			"/>
+    </g>
+    <g>
+        <polygon fill="#EF3E32" points="500,159.011 500,105.667 250.002,250.002 			"/>
+        <polygon fill="#EF3E32" points="0,394.342 250.002,250.002 0,340.996 			"/>
+    </g>
+    <g>
+        <polygon fill="#EF3E32" points="0,459.779 0,500 40.23,500 250.003,250.001 			"/>
+        <polygon fill="#EF3E32" points="500,0 459.778,0 250.003,250.001 500,40.229 			"/>
+    </g>
+    <g>
+        <polygon fill="#EF3E32" points="159.011,500 250.001,250.004 105.667,500 			"/>
+        <polygon fill="#EF3E32" points="250.001,250.004 394.34,0 340.995,0 			"/>
+    </g>
+</svg>

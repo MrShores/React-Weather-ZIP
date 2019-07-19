@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import { CSSTransition } from 'react-transition-group';
+import AnimateInOut from './hoc/AnimateInOut/AnimateInOut';
 import Credits from './components/Credits/Credits';
 import Background from './components/Background/Background';
 import SearchForm from './components/SearchForm/SearchForm';
 import WeatherResults from './components/WeatherResults/WeatherResults';
-import AnimateInOut from './hoc/AnimateInOut/AnimateInOut';
+import Zip404Error from './components/ZipCode404/ZipCode404';
 import Axios from 'axios';
 
 
@@ -60,12 +61,14 @@ const data = {
 class App extends Component {
 
     state = {
-        // zipCode: '',
-        // weather: {},
-        zipCode: 95818,
-        weather: data,
+        zipCode: '',
+        weather: {},
+        // zipCode: 95818,
+        // weather: data,
         gradientColor: 'start',
         currentView: 'searchForm',
+        // currentView: 'zipCode404',
+        zipCode404: false,
         key: '22b1fd9ad5cbf49c0631288f6ab6eb6e',
     }
 
@@ -85,16 +88,28 @@ class App extends Component {
             Axios.get('/data/2.5/weather?units=imperial&q=' + zipCode + ',us&APPID=' + this.state.key)
                 .then(response => {
                     this.setState({
-                        weather: response.data
+                        weather: response.data,
+                        zipCode404: false,
                     });
                     this.showWeatherResults();
                 })
-                .catch(errors => {
-                    console.log(errors);
+                .catch(error => {
+                    if( error.response ){ // Response status is not 2XX
+                        if( error.response.status === 404 ){
+                            this.setState({
+                                currentView: 'zipCode404',
+                                zipCode404: true,
+                                weather: {}
+                            });
+                        }
+                    } else if (error.request) { // No response from server
+                        // console.log(errors);
+                    } else {
+                        // console.log(errors);
+                    }
                 });
         } else {
-            console.log('zipCodeSubmitHandler ELSE ELSE');
-            if( this.state.zipCode !== null && this.state.weather !== {} ){
+            if( this.state.zipCode !== null && this.state.weather !== {} && !this.state.zipCode404 ){
                 this.showWeatherResults();
             }
         }
@@ -132,13 +147,15 @@ class App extends Component {
             gradient = temperature;
         } else if( temperature === null ){
             gradient = 'start';
-        } else if( 100 <= temperature ){
+        } else if( 98 <= temperature ){
             gradient = 'red';
-        } else if ( 90 <= temperature ){
+        } else if ( 88 <= temperature ){
             gradient = 'orange';
         } else if ( 72 <= temperature ){
+            gradient = 'blueLight';
+        } else if ( 60 <= temperature ){
             gradient = 'blue';
-        } else if ( temperature <= 71 ){
+        } else if ( temperature <= 59 ){
             gradient = 'purple';
         }
         this.setState({gradientColor: gradient});
@@ -164,7 +181,8 @@ class App extends Component {
                     >                        
                         <SearchForm
                             zipCode={this.state.zipCode}
-                            zipCodeSubmit={this.zipCodeSubmitHandler} />
+                            zipCodeSubmit={this.zipCodeSubmitHandler}
+                            zipCode404={this.state.zipCode404} />
                     </AnimateInOut>
 
                     <AnimateInOut
@@ -178,6 +196,17 @@ class App extends Component {
                             weather={this.state.weather}
                             closeResults={this.closeWeatherResultsHandler} />
                     </AnimateInOut>
+
+                    <CSSTransition
+                        in={this.state.currentView === 'zipCode404'}
+                        appear={true}
+                        timeout={500}
+                        mountOnEnter
+                        unmountOnExit
+                        classNames="zipCode404"
+                    >
+                        <Zip404Error close404={this.closeWeatherResultsHandler} />
+                    </CSSTransition>
 
                 </div>
             </div>
