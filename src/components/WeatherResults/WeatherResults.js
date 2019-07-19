@@ -9,6 +9,10 @@ class Weather extends Component {
         resultValues: [],
     }
 
+    componentWillUnmount() {
+        this.props.mounted();
+    }
+
     /**
      * Meter's to miles raw calculation
      */
@@ -61,12 +65,38 @@ class Weather extends Component {
                     </div>
                     <div className={classes.City}>{w.name}</div>
 
-                    <WeatherResult index={1} label="Low" value={w.main.temp_min.toFixed()} unit="°" />
-                    <WeatherResult index={2} label="High" value={w.main.temp_max.toFixed()} unit="°" />
-                    <WeatherResult index={3} label="Humidity" value={w.main.humidity.toFixed()} unit="%" />
-                    <WeatherResult index={4} label="Pressure" value={w.main.pressure} unit="hPa" />
-                    <WeatherResult index={5} label="Visibility" value={this.metersToMiles(w.visibility)} unit="miles" />
-                    <WeatherResult index={6} label="Wind" value={this.windSpeed(w.wind.speed)} unit="mph" />
+                    <WeatherResult
+                        index={1}
+                        label="Low"
+                        value={w.main.temp_min.toFixed()}
+                        unit="°"
+                        full />
+                    <WeatherResult
+                        index={2}
+                        label="High"
+                        value={w.main.temp_max.toFixed()}
+                        unit="°"
+                        full />
+                    <WeatherResult
+                        index={3}
+                        label="Humidity"
+                        value={w.main.humidity.toFixed()}
+                        unit="%" />
+                    <WeatherResult
+                        index={4}
+                        label="Pressure"
+                        value={w.main.pressure}
+                        unit="hPa" />
+                    <WeatherResult
+                        index={5}
+                        label="Visibility"
+                        value={this.metersToMiles(w.visibility)}
+                        unit="miles" />
+                    <WeatherResult
+                        index={6}
+                        label="Wind"
+                        value={this.windSpeed(w.wind.speed)}
+                        unit="mph" />
 
                     <div className={classes.Updated}>
                         Updated: {this.updatedTime(w.dt)}

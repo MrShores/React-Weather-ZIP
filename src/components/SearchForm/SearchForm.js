@@ -94,6 +94,7 @@ class SearchForm extends Component {
         }
     }
 
+
     /* Render
     -------------------------------------------------------------------------*/
 
@@ -101,6 +102,15 @@ class SearchForm extends Component {
 
         const cssClasses = [classes.SearchForm];
         const formClass = this.state.isFocus ? classes.FormFocus : null;
+
+        let cityName = null;
+        if( this.props.hasResults && this.props.zipCode === this.state.zipCode ){
+            cityName = (
+                <div className={classes.City}>
+                    {this.props.weather.name}
+                </div>
+            );
+        }
 
         return (
             <div className={cssClasses.join(' ')}>
@@ -119,6 +129,7 @@ class SearchForm extends Component {
                         <button>Go</button>
                     </div>
                 </form>
+                {cityName}
                 <ErrorMessage
                     show={this.state.hasError}
                     message={this.state.errorMsg} />

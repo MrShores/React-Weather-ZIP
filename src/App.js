@@ -9,65 +9,14 @@ import WeatherResults from './components/WeatherResults/WeatherResults';
 import Zip404Error from './components/ZipCode404/ZipCode404';
 import Axios from 'axios';
 
-
-/* CACHED DATA -- DELETE!
------------------------------------------------------------------------------*/
-
-const data = {
-    "coord": {
-        "lon": -121.49,
-        "lat": 38.56
-    },
-    "weather": [
-        {
-        "id": 711,
-        "main": "Smoke",
-        "description": "smoke",
-        "icon": "50d"
-        }
-    ],
-    "base": "stations",
-    "main": {
-        "temp": 90.68,
-        "pressure": 1010,
-        "humidity": 31,
-        "temp_min": 84.99,
-        "temp_max": 95
-    },
-    "visibility": 12874,
-    "wind": {
-        "speed": 6.93,
-        "gust": 5.7
-    },
-    "clouds": {
-        "all": 1
-    },
-    "dt": 1563317358,
-    "sys": {
-        "type": 1,
-        "id": 4838,
-        "message": 0.0109,
-        "country": "US",
-        "sunrise": 1563281661,
-        "sunset": 1563334156
-    },
-    "timezone": -25200,
-    "id": 5389489,
-    "name": "Sacramento",
-    "cod": 200
-};
-
-
 class App extends Component {
 
     state = {
         zipCode: '',
         weather: {},
-        // zipCode: 95818,
-        // weather: data,
+        hasResults: false,
         gradientColor: 'start',
         currentView: 'searchForm',
-        // currentView: 'zipCode404',
         zipCode404: false,
         key: '22b1fd9ad5cbf49c0631288f6ab6eb6e',
     }
@@ -82,7 +31,10 @@ class App extends Component {
     zipCodeSubmitHandler = (zipCode) => {
         if( this.state.zipCode !== zipCode ){
 
-            this.setState({zipCode: zipCode});
+            this.setState({
+                zipCode: zipCode,
+                hasResults: false,
+            });
 
             // Get weather for zipCode from API
             Axios.get('/data/2.5/weather?units=imperial&q=' + zipCode + ',us&APPID=' + this.state.key)
@@ -115,11 +67,6 @@ class App extends Component {
         }
     }
 
-    showWeatherResults = () => {
-        this.setState({currentView: 'weatherResults'});
-        this.updateGradientFromTemp(this.state.weather.main.temp);
-    }
-
     /**
      * WeatherResults close button click
      *  - show the SearchForm
@@ -134,12 +81,25 @@ class App extends Component {
         }, 200);
         // Fade in the <SearchForm>
         setTimeout(() => {
-            this.setState({currentView: 'searchForm'});
+            this.setState({
+                currentView: 'searchForm',
+                isFirstSearch: false
+            });
         }, 500);
     }
 
+    weatherResultsMountedHandler = () => {
+        this.setState({hasResults: true});
+    }
+
+
     /* Methods
     -------------------------------------------------------------------------*/
+
+    showWeatherResults = () => {
+        this.setState({currentView: 'weatherResults'});
+        this.updateGradientFromTemp(this.state.weather.main.temp);
+    }
 
     updateGradientFromTemp = (temperature) => {
         let gradient = 'start';
@@ -182,7 +142,9 @@ class App extends Component {
                         <SearchForm
                             zipCode={this.state.zipCode}
                             zipCodeSubmit={this.zipCodeSubmitHandler}
-                            zipCode404={this.state.zipCode404} />
+                            zipCode404={this.state.zipCode404}
+                            weather={this.state.weather}
+                            hasResults={this.state.hasResults} />
                     </AnimateInOut>
 
                     <AnimateInOut
@@ -194,7 +156,8 @@ class App extends Component {
                     >
                         <WeatherResults
                             weather={this.state.weather}
-                            closeResults={this.closeWeatherResultsHandler} />
+                            closeResults={this.closeWeatherResultsHandler}
+                            mounted={this.weatherResultsMountedHandler} />
                     </AnimateInOut>
 
                     <CSSTransition

@@ -9,6 +9,8 @@
     transition: all 200ms ease-out;
 }
 
+/* Background
+-----------------------------------------------------------------------------*/
 
 .ZipCode404Background {
     position: absolute;
@@ -28,9 +30,21 @@
 	to { transform: rotate(360deg) }
 }
 
+@media (max-width: 600px){
+    .ZipCode404Background {
+        width: 300%;
+        height: 300%;
+        top: -100%;
+        left: calc(-100% + 20px);
+    }
+}
+
+
+/* T Rex
+-----------------------------------------------------------------------------*/
 
 .Trex {
-    width: 60%;
+    width: 65%;
     max-width: 708px;
     top: 50%;
     transform: translate(-100%, -70%);
@@ -43,10 +57,19 @@
         transform: translate(-100%, -70%);
     }
     to {
-        transform: translate(0, -50%);
+        transform: translate(20px, -50%);
     }
 }
 
+@media (max-width: 450px){
+    .Trex {
+        width: 75%;
+    }
+}
+
+
+/* Try Again
+-----------------------------------------------------------------------------*/
 
 .TryAgain {
     border: 9px solid #38093d;
@@ -56,7 +79,7 @@
     left: 50%;
     top: 50px;
     width: 344px;
-    margin-left: -172px;
+    margin-left: -152px;
     line-height: 1;
     font-size: 24px;
     font-weight: 700;
@@ -82,6 +105,17 @@
     }
 }
 
+@media (max-width: 450px){
+    .TryAgain {
+        font-size: 18px;
+        width: 270px;
+        margin-left: -115px;
+    }
+}
+
+
+/* Attribution
+-----------------------------------------------------------------------------*/
 
 .Attribution {
     position: absolute;

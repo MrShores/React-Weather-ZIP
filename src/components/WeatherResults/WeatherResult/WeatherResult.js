@@ -30,7 +30,7 @@ const result = (props) => {
                     <span className={classes.Number}>
                         {props.value}
                     </span>
-                    <span className={classes.Unit}>
+                    <span className={props.full ? classes.UnitFull : classes.Unit}>
                         {props.unit}
                     </span>
                 </div>
