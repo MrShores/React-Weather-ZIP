@@ -6,6 +6,7 @@ const background = (props) => {
 
     const colors = [
         'start',
+        'purple',
         'blue',
         'orange',
         'red',

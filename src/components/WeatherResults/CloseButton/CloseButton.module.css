@@ -1,0 +1,44 @@
+.CloseButton {
+    display: block;
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    font-size: 10px;
+    text-align: center;
+    padding: 0;
+    border: 0;
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    background: hsla(0,0%,0%,0.3);
+    transition: all 180ms ease-in;
+}
+
+.CloseButton span {
+    color: white;
+    font-size: 4.2em;
+    display: inline-block;
+    line-height: 1;
+    margin-top: -0.25em;
+    position: relative;
+    z-index: 20;
+}
+
+.CloseButton:after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    background: hsla(0,0%,0%,0.2);
+    transition: all 180ms ease-in;
+}
+
+.CloseButton:hover:after {
+    transform: scale(1);
+    z-index: 10;
+}

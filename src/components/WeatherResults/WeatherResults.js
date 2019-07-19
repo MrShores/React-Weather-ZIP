@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './WeatherResults.module.css';
+import CloseButton from './CloseButton/CloseButton';
 
 class Weather extends Component {
 
@@ -48,7 +49,7 @@ class Weather extends Component {
 
         return (
             <div className={classes.WeatherResults}>
-                <button className={classes.Close}><span>&times;</span></button>
+                <CloseButton click={this.props.closeResults} />
                 <div className={classes.Weather}>
                     <div className={classes.Temperature}>
                         {w.main.temp.toFixed()}°

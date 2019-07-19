@@ -5,6 +5,9 @@ const gradient = (props) => {
 
     let gradientClasses = [];
     switch( props.color ){
+        case 'purple':
+            gradientClasses.push(classes.GradientPurple);
+            break;
         case 'blue':
             gradientClasses.push(classes.GradientBlue);
             break;

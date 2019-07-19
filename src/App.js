@@ -5,9 +5,12 @@ import Credits from './components/Credits/Credits';
 import Background from './components/Background/Background';
 import SearchForm from './components/SearchForm/SearchForm';
 import WeatherResults from './components/WeatherResults/WeatherResults';
+import FadeInOut from './hoc/FadeInOut/FadeInOut';
 import Axios from 'axios';
 
 
+/* CACHED DATA -- DELETE!
+-----------------------------------------------------------------------------*/
 
 const data = {
     "coord": {
@@ -57,51 +60,116 @@ const data = {
 class App extends Component {
 
     state = {
-        zipCode: '',
-        temperature: null,
+        // zipCode: '',
+        // weather: {},
+        zipCode: 95818,
         weather: data,
-        key: '22b1fd9ad5cbf49c0631288f6ab6eb6e',
         gradientColor: 'start',
+        currentView: 'searchForm',
+        key: '22b1fd9ad5cbf49c0631288f6ab6eb6e',
     }
+
+
+    /* Handlers
+    -------------------------------------------------------------------------*/
 
     /**
      * Accept the validated zipCode from <SearchForm>
      */
     zipCodeSubmitHandler = (zipCode) => {
-        console.log('[App] zipCodeSubmitHandler ' + zipCode);
-        this.setState({zipCode: zipCode});
-        // Get weather for zipCode from API
-        // Axios.get('/data/2.5/weather?units=imperial&q=' + zipCode + ',us&APPID=' + this.state.key)
-        //     .then(response => {
-        //         console.log(response.data);
-        //     })
-        //     .catch(errors => {
-        //         console.log(errors);
-        //     });
+        if( this.state.zipCode !== zipCode ){
 
-        // Swap out to Weather View
+            this.setState({zipCode: zipCode});
+
+            // Get weather for zipCode from API
+            Axios.get('/data/2.5/weather?units=imperial&q=' + zipCode + ',us&APPID=' + this.state.key)
+                .then(response => {
+                    this.setState({
+                        weather: response.data
+                    });
+                    this.showWeatherResults();
+                })
+                .catch(errors => {
+                    console.log(errors);
+                });
+        } else {
+            console.log('zipCodeSubmitHandler ELSE ELSE');
+            if( this.state.zipCode !== null && this.state.weather !== {} ){
+                this.showWeatherResults();
+            }
+        }
     }
-    
-    render() {
-        /*
-        const view = (
-            <SearchForm
-                zipCode={this.state.zipCode}
-                zipCodeSubmit={this.zipCodeSubmitHandler} />
-        );
-        */
-        const view = (<WeatherResults weather={this.state.weather} />);
 
+    showWeatherResults = () => {
+        this.setState({currentView: 'weatherResults'});
+        this.updateGradientFromTemp(this.state.weather.main.temp);
+    }
+
+    /**
+     * WeatherResults close button click
+     *  - show the SearchForm
+     *  - reset the background gradient to default ('start')
+     */
+    weatherResultsCloseHandler = () => {
+        this.setState({currentView: 'searchForm'});
+        this.updateGradientFromTemp(NaN);
+    }
+
+    /* Methods
+    -------------------------------------------------------------------------*/
+
+    updateGradientFromTemp = (temperature) => {
+        let gradient = 'start';
+        if( typeof(temperature) === 'string' ){
+            gradient = temperature;
+        } else if( temperature === null ){
+            gradient = 'start';
+        } else if( 100 <= temperature ){
+            gradient = 'red';
+        } else if ( 90 <= temperature ){
+            gradient = 'orange';
+        } else if ( 72 <= temperature ){
+            gradient = 'blue';
+        } else if ( temperature <= 71 ){
+            gradient = 'purple';
+        }
+        this.setState({gradientColor: gradient});
+    }
+
+
+    /* Render
+    -------------------------------------------------------------------------*/
+
+    render() {
         return (
             <div className="App">
                 <Credits />
                 <Background gradientColor={this.state.gradientColor} />
-    
                 <div className="WeatherLayout">
 
-                    
-                    {view}
+                    <FadeInOut
+                        in={this.state.currentView === 'searchForm'}
+                        timeout={{
+                            enter: 500,
+                            exit: 300,
+                        }}
+                    >                        
+                        <SearchForm
+                            zipCode={this.state.zipCode}
+                            zipCodeSubmit={this.zipCodeSubmitHandler} />
+                    </FadeInOut>
 
+                    <FadeInOut
+                        in={this.state.currentView === 'weatherResults'}
+                        timeout={{
+                            enter: 500,
+                            exit: 300,
+                        }}
+                    >
+                        <WeatherResults
+                            weather={this.state.weather}
+                            closeResults={this.weatherResultsCloseHandler} />
+                    </FadeInOut>
 
                 </div>
             </div>

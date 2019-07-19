@@ -6,10 +6,26 @@ class SearchForm extends Component {
  
     state = {
         isFocus: false,
-        zipCode: '',
+        zipCode: this.props.zipCode ? this.props.zipCode : '',
         hasError: false,
         errorMsg: '',
     }
+
+
+    /* Lifecycle
+    -------------------------------------------------------------------------*/
+
+    // componentWillMount(){
+    //     console.log('[SearchForm] willMount');
+    // }
+
+    // componentDidMount(){
+    //     console.log('[SearchForm] didMount');
+    // }
+
+
+    /* Methods and Handlers
+    -------------------------------------------------------------------------*/
 
     /**
      * Set error message
@@ -80,11 +96,16 @@ class SearchForm extends Component {
         }
     }
 
+    /* Render
+    -------------------------------------------------------------------------*/
+
     render() {
+
+        const cssClasses = [classes.SearchForm];
         const formClass = this.state.isFocus ? classes.FormFocus : null;
 
         return (
-            <div className={classes.SearchForm}>
+            <div className={cssClasses.join(' ')}>
                 <form className={formClass} onSubmit={this.formSubmitHandler} action="" method="POST" autoComplete="off">
                     <label htmlFor="zipcode">ZIP Code</label>
                     <input
