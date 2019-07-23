@@ -38,3 +38,22 @@
     font-size: 2.7em;
     padding-left: 2px;
 }
+
+/* Vertical */
+
+@media (max-height: 740px){
+    .WeatherResult {
+        padding: 1.4em 0 0;
+    }
+}
+
+/* Horrizontal */
+
+@media (max-width: 480px){
+    .Label {
+        font-size: 1.2em;
+    }
+    .Number {
+        font-size: 2.4em;
+    }
+}

@@ -1,6 +1,6 @@
 .Credits {
     background: white;
-    position: absolute;
+    position: fixed;
     z-index: 500;
     height: 100%;
     width: 40px;

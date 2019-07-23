@@ -41,10 +41,8 @@ class SearchForm extends Component {
     clearErrorMessage = () => {
         this.setState({
             hasError: false,
+            errorMsg: '',
         });
-        setTimeout(() => {
-            this.setState({errorMsg: ''});
-        }, 200);
     }
 
     /**

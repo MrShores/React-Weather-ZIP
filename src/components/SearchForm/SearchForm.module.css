@@ -98,3 +98,47 @@
     padding: 10px;
     text-shadow: 0 1px 1px hsla(0,0%,0%,0.5);
 }
+
+/* Media */
+
+@media (max-width: 700px){
+    .SearchForm {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 450px){
+    .SearchForm form {
+        padding: 8px;
+    }
+    .SearchForm input,
+    .SearchForm button {
+        height: 46px;
+        line-height: 46px;
+        font-size: 21px;
+    }
+    .SearchForm input {
+        width: 200px;
+    }
+    .SearchForm input:focus {
+        width: 220px;
+    }
+    .SearchForm button {
+        width: 54px;
+    }
+}
+
+@media (max-width: 380px){
+    .SearchForm {
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 350px){
+    .SearchForm input {
+        width: 160px;
+    }
+    .SearchForm input:focus {
+        width: 180px;
+    }
+}

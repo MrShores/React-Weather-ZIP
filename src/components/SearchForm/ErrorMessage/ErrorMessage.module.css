@@ -20,3 +20,9 @@
 .Show {
     opacity: 1;
 }
+
+@media (max-width: 450px){
+    .ErrorMessage {
+        font-size: 13px;
+    }
+}
