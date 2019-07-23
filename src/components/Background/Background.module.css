@@ -1,7 +1,7 @@
 .Background {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
@@ -11,6 +11,6 @@
     background-image: url(../../assets/images/dot-screen--3x3--black.png);
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     z-index: 30;
 }
