@@ -12,7 +12,7 @@ const credits = (props) => {
         <div className={cssClasses.join(' ')}>
             <div className={classes.CreditsText}>
                 <span>React Weather App</span>&ensp;/&ensp;
-                <a href="http://michaelshores.com" target="_blank" rel="noopener noreferrer">Michael Shores</a>
+                <a href="https://github.com/MrShores/react-weather-zip" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
         </div>
     );
