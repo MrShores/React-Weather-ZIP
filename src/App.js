@@ -101,6 +101,9 @@ class App extends Component {
         this.updateGradientFromTemp(this.state.weather.main.temp);
     }
 
+    /**
+     * Map temperature to background gradient key
+     */
     updateGradientFromTemp = (temperature) => {
         let gradient = 'start';
         if( typeof(temperature) === 'string' ){
@@ -166,11 +169,11 @@ class App extends Component {
                         in={this.state.currentView === 'zipCode404'}
                         appear={true}
                         timeout={500}
-                        mountOnEnter
-                        unmountOnExit
                         classNames="zipCode404"
                     >
-                        <Zip404Error close404={this.closeWeatherResultsHandler} />
+                        <Zip404Error
+                            show={this.state.currentView === 'zipCode404'}
+                            close404={this.closeWeatherResultsHandler} />
                     </CSSTransition>
 
                 </div>

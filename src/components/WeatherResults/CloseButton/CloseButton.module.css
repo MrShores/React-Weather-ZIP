@@ -3,10 +3,11 @@
     width: 6em;
     height: 6em;
     border-radius: 50%;
+    border: 0;
+    outline: 0;
     font-size: 10px;
     text-align: center;
     padding: 0;
-    border: 0;
     position: absolute;
     top: 2em;
     right: 2em;
@@ -34,11 +35,12 @@
     width: 100%;
     height: 100%;
     transform: scale(0);
-    background: hsla(0,0%,0%,0.2);
+    background: hsla(0,0%,0%,0.4);
     transition: all 180ms ease-in;
 }
 
-.CloseButton:hover:after {
+.CloseButton:hover:after,
+.CloseButton:focus:after {
     transform: scale(1);
     z-index: 10;
 }

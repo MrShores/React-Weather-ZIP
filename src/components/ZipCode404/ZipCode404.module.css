@@ -7,6 +7,7 @@
     height: 100%;
     overflow: hidden;
     transition: all 200ms ease-out;
+    transform: translateX(-100%);
 }
 
 /* Background
@@ -14,10 +15,10 @@
 
 .ZipCode404Background {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
     background-image: url("../../assets/svg/radial-background.svg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -44,34 +45,49 @@
 -----------------------------------------------------------------------------*/
 
 .Trex {
-    width: 65%;
-    max-width: 708px;
-    top: 50%;
-    transform: translate(-100%, -70%);
+    width: 100%;
+    height: 100%;
+    padding: 140px 40px 40px 40px;
     position: absolute;
+    display: flex;
+}
+
+.Trex img {
+    display: block;
+    max-width: 90%;
+    max-height: 100%;
+    align-self: center;
+    margin-top: -20px;
+    transform: translateX(-100%);
     transition: all 0.5s ease-out;
+}
+
+.Show .Trex img {
     animation: trexIn 250ms 100ms ease-out forwards;
 }
 @keyframes trexIn {
     from {
-        transform: translate(-100%, -70%);
+        transform: translateX(-100%);
     }
     to {
-        transform: translate(20px, -50%);
-    }
-}
-
-@media (max-width: 450px){
-    .Trex {
-        width: 75%;
+        transform: translateX(0);
     }
 }
 
 @media (max-width: 400px){
     .Trex {
-        margin-left: -10px;
+        padding-left: 30px;
     }
 }
+
+@media (max-height: 550px){
+    .Trex {
+        padding-top: 100px;
+    }
+}
+
+
+
 
 
 /* Try Again
@@ -116,7 +132,7 @@
     }
 }
 
-@media (max-width: 650px){
+@media (max-width: 650px), (max-height: 550px) {
     .TryAgain button {
         transform: scale(1);
     }
@@ -131,6 +147,14 @@
     }
     .TryAgain button:hover {
         transform: scale(0.9);
+    }
+}
+
+/* Vertical */
+
+@media (max-height: 550px){
+    .TryAgain {
+        top: 30px;
     }
 }
 
